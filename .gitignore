@@ -1,0 +1,34 @@
+# Ignore node_modules from both frontend and backend
+node_modules/
+client/node_modules/
+backend/node_modules/
+
+# Ignore environment variables
+.env
+.env.*
+*.env
+client/.env
+backend/.env
+!.env.example
+!client/.env.example
+!backend/.env.example
+
+# Ignore build outputs
+client/build/
+backend/build/
+
+# Ignore log files
+*.log
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+
+# Ignore coverage/test/temp
+coverage/
+*.test.js
+temp/
