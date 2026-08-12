@@ -95,9 +95,9 @@ const EditorPage = () => {
                 socketRef.current.disconnect();
                 socketRef.current.off(ACTIONS.JOINED);
                 socketRef.current.off(ACTIONS.DISCONNECTED);
-                socketRef.current.off(ACTIONS.CODE_CHANGE);
             }
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [roomId, location.state?.username]);
 
     const handleErrors = (e) => {

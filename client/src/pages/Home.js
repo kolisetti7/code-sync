@@ -95,7 +95,7 @@ const Home = () => {
                         If you don't have a room ID, create &nbsp;
                         <a
                             onClick={createNewRoom}
-                            href="#"
+                            href="#new-room"
                             className="createNewBtn"
                         >
                             new room
