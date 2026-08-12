@@ -40,7 +40,10 @@ const ProtectedRoute = ({ children }) => {
     const verifyUser = async () => {
       try {
         const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:4000';
+        const token = localStorage.getItem('token');
+        const headers = token ? { Authorization: `Bearer ${token}` } : {};
         await axios.get(`${backendUrl}/api/v1/auth/test`, {
+          headers,
           withCredentials: true,
         });
         setIsAuthenticated(true);

@@ -16,12 +16,15 @@ const Home = () => {
   const handleLogout = async () => {
     try {
       const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:4000';
+      localStorage.removeItem('token');
       await axios.get(`${backendUrl}/api/v1/auth/logout`, {
         withCredentials: true,
       });
       navigate("/login");
     } catch (err) {
       console.error("Logout failed:", err);
+      localStorage.removeItem('token');
+      navigate("/login");
     }
   };
 

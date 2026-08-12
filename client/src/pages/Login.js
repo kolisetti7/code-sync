@@ -15,6 +15,9 @@ const Login = () => {
       const res = await axios.post(
         `${backendUrl}/api/v1/auth/login`, { email, password }, { withCredentials: true });
       if (res.data.success) {
+        if (res.data.token) {
+          localStorage.setItem('token', res.data.token);
+        }
         navigate('/home');
       }
     } catch (err) {

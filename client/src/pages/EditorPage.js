@@ -140,10 +140,14 @@ const EditorPage = () => {
 
         const fullPrompt = `${codeRef.current}\n\n// Instruction:\n${aiInput}`;
 
+        const token = localStorage.getItem('token');
+        const headers = { 'Content-Type': 'application/json' };
+        if (token) headers['Authorization'] = `Bearer ${token}`;
+
         const res = await axios.post(
             `${backendUrl}/api/v1/ai/suggest`,
             { prompt: fullPrompt },
-            { headers: { 'Content-Type': 'application/json' } }
+            { headers }
         );
 
         const data = res.data;
