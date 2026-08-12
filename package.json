@@ -1,0 +1,8 @@
+{
+  "name": "code-sync-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "npm --prefix client install --legacy-peer-deps && npm --prefix client run build"
+  }
+}
