@@ -7,7 +7,12 @@ require("dotenv").config();
 
 const PORT = process.env.PORT || 4000;
 app.use(cors({
-    origin: ["http://localhost:3000", "http://localhost:5000", "https://code-sync-part-1-1.onrender.com"],
+    origin: (origin, callback) => {
+        if (!origin || origin.startsWith("http://localhost:") || origin.endsWith(".vercel.app") || origin.includes("onrender.com")) {
+            return callback(null, true);
+        }
+        return callback(null, true);
+    },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
