@@ -42,8 +42,12 @@ const EditorPage = () => {
 
     useEffect(() => {
         const init = async () => {
-            // Initialize socket connection
-            socketRef.current = io(process.env.REACT_APP_SOCKET_URL || window.location.origin); // Your server URL
+            const socketUrl = process.env.REACT_APP_SOCKET_URL || 'https://code-sync-rbi7.onrender.com';
+            socketRef.current = io(socketUrl, {
+                transports: ['websocket', 'polling'],
+                reconnectionAttempts: 5,
+                timeout: 10000,
+            });
             
             socketRef.current.on('connect_error', (err) => handleErrors(err));
             
@@ -136,7 +140,7 @@ const EditorPage = () => {
 
     const handleAISuggestion = async () => {
     try {
-        const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:4000';
+        const backendUrl = process.env.REACT_APP_BACKEND_URL || 'https://code-sync-rbi7.onrender.com';
 
         const fullPrompt = `${codeRef.current}\n\n// Instruction:\n${aiInput}`;
 

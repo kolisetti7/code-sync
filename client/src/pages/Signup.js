@@ -8,7 +8,7 @@ const Signup = () => {
 
   const handleSignup = async () => {
     try {
-      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:4000';
+      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'https://code-sync-rbi7.onrender.com';
       
       const res = await axios.post(
         `${backendUrl}/api/v1/auth/signup`,  form);

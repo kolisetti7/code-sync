@@ -9,7 +9,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:4000';
+      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'https://code-sync-rbi7.onrender.com';
       console.log('Backend URL:', backendUrl); // For debugging
       
       const res = await axios.post(
